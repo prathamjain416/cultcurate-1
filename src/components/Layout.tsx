@@ -4,23 +4,12 @@ import { Mail } from 'lucide-react';
 
 export function Layout({ children }: { children: React.ReactNode }) {
   const location = useLocation();
-  const isHomePage = location.pathname === '/';
+  const isHomePage = location.pathname === '/' || location.pathname.startsWith('/brands');
 
   return (
     <div className="min-h-screen bg-zinc-950 text-white">
-      {/* Header */}
-      {!isHomePage && (
-        <header className="fixed top-0 left-0 right-0 bg-zinc-950/80 backdrop-blur-lg z-50 border-b border-zinc-800">
-          <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-            <Link to="/" className="font-display text-2xl font-bold bg-gradient-to-b from-white to-zinc-400 bg-clip-text text-transparent">
-              CULT CURATE
-            </Link>
-          </div>
-        </header>
-      )}
-
       {/* Main Content */}
-      <main className={!isHomePage ? 'pt-16' : ''}>
+      <main>
         {children}
       </main>
 
